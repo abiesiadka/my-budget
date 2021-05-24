@@ -20,9 +20,9 @@ git remote - pokaż zdalne repozytoria
 git remote -v - jw. + adresy
 
 ### MVC pattern
-Controller
-Service
-Repository
+Controller -prezentuje dane
+Service - logika aplikacji
+Repository - zrodlo danych
 
 ### REST
 Create  - Post
