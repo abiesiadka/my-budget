@@ -5,3 +5,4 @@ public enum IncomeType {
     ADDITIONAL,
     MOPS
 }
+
