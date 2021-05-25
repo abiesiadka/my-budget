@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyRestController {
 
     @GetMapping("/my-data/{name}/{surname}")
-    void printMyData(@PathVariable("name")String name, @PathVariable("surname") String surname){
-       log.info("my data[{} {}]", name, surname);
+    void printMyData(@PathVariable("name") String name, @PathVariable("surname") String surname) {
+        log.info("my data: [{} {}]", name, surname);
     }
 }
