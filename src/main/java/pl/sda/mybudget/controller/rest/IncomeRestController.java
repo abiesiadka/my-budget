@@ -2,7 +2,6 @@ package pl.sda.mybudget.controller.rest;
 
 import org.springframework.web.bind.annotation.*;
 import pl.sda.mybudget.dto.IncomeDTO;
-
 import pl.sda.mybudget.service.IncomeService;
 
 import java.time.LocalDate;
@@ -20,11 +19,7 @@ public class IncomeRestController {
 
     // Select all
     @GetMapping
-<<<<<<< HEAD
-    List<Income> getAllIncomes() {
-=======
     List<IncomeDTO> getAllIncomes() {
->>>>>>> feature/data-structure-ab
         return incomeService.findAllIncomes();
     }
 
@@ -43,3 +38,4 @@ public class IncomeRestController {
         return incomeService.saveIncome(incomeToSave);
     }
 }
+
