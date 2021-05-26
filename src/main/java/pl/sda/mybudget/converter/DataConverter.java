@@ -4,7 +4,7 @@ package pl.sda.mybudget.converter;
 // TODO: check Jackson version changes
 public interface DataConverter<E, D> {
     D fromEntity(E entity);
-    E fromDto(D dto);
+    E fromDTO(D DTO);
 
 //    List<Income> incomes; - generic type is template one;)
 //    List incomes(); - the same as below

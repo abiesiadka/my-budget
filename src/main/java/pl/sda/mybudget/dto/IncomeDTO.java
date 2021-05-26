@@ -3,10 +3,7 @@ package pl.sda.mybudget.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Value;
-import pl.sda.mybudget.model.enumeration.IncomeType;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 // data transfer Object

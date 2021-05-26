@@ -2,7 +2,7 @@ package pl.sda.mybudget.controller.rest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.sda.mybudget.dto.IncomeDto;
+import pl.sda.mybudget.dto.IncomeDTO;
 import pl.sda.mybudget.service.IncomeService;
 
 import java.net.URI;
@@ -21,7 +21,7 @@ public class IncomeRestController {
 
     // Select all
     @GetMapping
-    List<IncomeDto> getAllIncomes() {
+    List<IncomeDTO> getAllIncomes() {
         return incomeService.findAllIncomes();
     }
 
@@ -30,13 +30,13 @@ public class IncomeRestController {
     // /rest/incomes/2
     // /rest/incomes/n - id of income goes here
     @GetMapping("/{id}")
-    IncomeDto findById(@PathVariable("id") Long idik) {
+    IncomeDTO findById(@PathVariable("id") Long idik) {
         return incomeService.findIncomeById(idik);
     }
 
     // send json to save inside request body
     @PostMapping
-    ResponseEntity<IncomeDto> createNewIncome(@RequestBody IncomeDto incomeToSave) {
+    ResponseEntity<IncomeDTO> createNewIncome(@RequestBody IncomeDTO incomeToSave) {
         var created = incomeService.saveIncome(incomeToSave);
         return ResponseEntity.created(URI.create("/rest/incomes/" + created.getId()))
                 .body(created);

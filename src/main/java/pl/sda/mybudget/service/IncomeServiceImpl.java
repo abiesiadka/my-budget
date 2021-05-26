@@ -4,24 +4,27 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sda.mybudget.converter.IncomeConverter;
-import pl.sda.mybudget.dto.IncomeDto;
+import pl.sda.mybudget.dto.IncomeDTO;
 import pl.sda.mybudget.repository.IncomeRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class IncomeServiceImpl implements IncomeService {
+public class IncomeServiceImpl implements IncomeService{
 
     private final IncomeRepository incomeRepository;
+    private final IncomeConverter incomeConverter;
 
-    public IncomeServiceImpl(final IncomeRepository incomeRepository) {
+    public IncomeServiceImpl(final IncomeRepository incomeRepository, final IncomeConverter incomeConverter) {
         this.incomeRepository = incomeRepository;
+        this.incomeConverter = incomeConverter;
     }
 
     @Override
-    public List<IncomeDto> findAllIncomes() {
+    public List<IncomeDTO> findAllIncomes() {
         log.info("finding all incomes");
         return incomeRepository.findAll()
                 .stream()
@@ -31,7 +34,7 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public IncomeDto findIncomeById(Long idik) {
+    public IncomeDTO findIncomeById(Long idik) {
         log.info("trying to find income with id: [{}]", idik);
         return incomeRepository.findById(idik)
 //                .map(income -> incomeConverter.fromEntity(income))
@@ -40,9 +43,9 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public IncomeDto saveIncome(IncomeDto incomeToSave) {
+    public IncomeDTO saveIncome(IncomeDTO incomeToSave) {
         log.info("trying to save: [{}]", incomeToSave);
-        var entityToSave = incomeConverter.fromDto(incomeToSave);
+        var entityToSave = incomeConverter.fromDTO(incomeToSave);
         return incomeConverter.fromEntity(incomeRepository.save(entityToSave));
     }
 
